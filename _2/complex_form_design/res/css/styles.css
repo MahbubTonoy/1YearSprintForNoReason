@@ -1,0 +1,184 @@
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+html,body {
+ background: #009de1;
+ font-family: 'Roboto', sans-serif;
+}
+.wrapper {
+ max-width: 600px;
+ margin: 3% auto;
+ max-height: 80vh;
+ /* overflow: scroll; */
+ scrollbar-width: none;
+ -ms-overflow-style: none;
+ position: relative;
+ z-index: 1;
+}
+.wrapper::-webkit-scrollbar {
+ display: none;
+}
+.wrapper::before {
+ content: '';
+ position: absolute;
+ height: 50%;
+ width: calc(100% + 50px);
+ background: #404040;
+ left: -25px;
+ top: -25px;
+ z-index: -1; 
+}
+.container {
+ padding: 45px;
+ background: #f0f0f0;
+}
+
+
+.product_details {
+ display: flex;
+}
+.product_image {
+ width: 30%;
+}
+.product_image img {
+ width: 100%;
+}
+.product_name {
+ width: 70%;
+ padding: 10px;
+}
+.product_name h2 {
+ font-weight: 400;
+}
+.product_name span {
+ font-weight: 700;
+ color: #009de1;
+ margin: 10px 0;
+}
+
+.payment_method {
+ font-weight: 400;
+ margin: 20px 0;
+ font-size: 18px;
+}
+.fa-lock {
+ vertical-align: middle;
+ font-size: 12px;
+ margin-left: 5px;
+}
+.fa-cc-visa {
+ margin-left: auto;
+ float: right;
+ font-size: 30px;
+}
+
+
+
+.credit_card_info {
+ display: flex;
+}
+
+.input_box {
+ border-bottom: 1px solid #aaa;
+ margin: 0 7px;
+ position: relative;
+ overflow: hidden;
+ padding-top: 10px;
+}
+
+.input_box::before {
+ content: attr(data-placeholder);
+ position: absolute;
+ left: 3px;
+ bottom: 3px;
+ opacity: 0.5;
+ transition: all 0.2s linear;
+ pointer-events: none;
+}
+.input_box:focus-within::before,
+.input_box input:valid ~ .input_box::before {
+ font-size: 13px;
+ bottom: 25px;
+}
+
+.input_box::after {
+ content: '';
+ width: 100%;
+ height: 3px;
+ background: #009de1;
+ position: absolute;
+ left: -100%;
+ bottom: -2px;
+ transition: all 0.2s linear;
+}
+.input_box:focus-within::after {
+ left: 0;
+}
+
+
+.credit_card_info input {
+ background: #f0f0f0;
+ border: 0;
+ padding: 7px;
+ outline: none;
+ width: 100%;
+ margin-top: 20px;
+}
+
+
+
+.credit_card_info .input_box:first-child {
+ margin-left: 0;
+}
+.credit_card_info .input_box:last-child {
+ margin-right: 0;
+}
+
+.card_number {
+ width: 40%;
+}
+.expiry,
+.cvv {
+ width: 30%;
+}
+
+
+
+.pricing_info {
+ margin-top: 20px;
+ width: 100%;
+}
+.pricing_info tr td{
+ padding: 5px 0;
+}
+.pricing_info tr td:last-child {
+ text-align: right;
+}
+
+.tax {
+ font-size: 14px;
+ opacity: 0.5;
+}
+.shipping_cost {
+ color: #00c900
+}
+.total_price {
+ font-weight: bold;
+}
+.total_price td {
+ padding-top: 20px;
+}
+
+.submit-btn {
+ border: 0;
+ width: 100%;
+ padding: 10px;
+ margin-top: 10px;
+ background: #009de1;
+ color: #fff;
+ border-radius: 20px;
+ cursor: pointer;
+}

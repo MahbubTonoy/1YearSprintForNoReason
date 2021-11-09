@@ -1,0 +1,36 @@
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+.container {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 10px;
+}
+.elements {
+ background: #ffcccc;
+ padding: 10px;
+}
+.elements_1 {
+ grid-column-start: 1;
+ grid-column-end: 3;
+}
+.elements_6 {
+ grid-column: 1/3;
+}
+.elements_5 {
+ grid-column: 3/4;
+ grid-row-start: 2;
+ grid-row-end: 4;
+}
+
+
+
+
+.news {
+ text-align: justify;
+ column-count: 3;
+ column-gap: 30px;
+ column-rule : 10px double red;
+}

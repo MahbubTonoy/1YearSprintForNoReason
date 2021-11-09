@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Complex Form Design | Way To Become Junior Web Dev Sprint #2</title>
+
+ <!-- fontawesome -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+ <!-- /fontawesome -->
+ 
+ 
+ <!-- google fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+ <!-- /google fonts -->
+ 
+ <!-- base css -->
+ <link rel="stylesheet" href="res/css/styles.css" type="text/css" />
+ <!-- /base css -->
+
+</head>
+<body>
+ <div class="wrapper">
+  <div class="container">
+   <div class="product_details">
+    <div class="product_image">
+     <img src="res/images/ism-large-backpack-black-front_d0c9815b-e286-4fc9-8a8a-6eacf6feb584_1014x.webp" alt="backpack" />
+    </div>
+    <div class="product_name">
+     <h2>Little America Backpack</h2>
+     <span>129$</span>
+    </div>
+   </div>
+   <div class="payment_method">
+    Payment <i class="fas fa-lock"></i>
+    <i class="fab fa-cc-visa"></i>
+   </div>
+
+   <div class="credit_card_info">
+
+    <div class="input_box card_number" data-placeholder="Card Number">
+     <input type="text"/>
+    </div>
+
+    <div class="input_box expiry" data-placeholder="Expiry">
+     <input type="text"/>
+    </div>
+
+    <div class="input_box cvv" data-placeholder="CVV">
+     <input type="text"/>
+    </div>
+     
+   </div>
+
+
+   <table class="pricing_info">
+    <tr>
+     <td>Subtotal</td>
+     <td>129$</td>
+    </tr>
+    <tr class="tax">
+     <td>Tax</td>
+     <td>0$</td>
+    </tr>
+    <tr>
+     <td>Shipping</td>
+     <td class="shipping_cost">Free</td>
+    </tr>
+    <tr class="total_price">
+     <td>Total</td>
+     <td>129$</td>
+    </tr>
+   </table>
+   <button class="btn submit-btn">PLACE ORDER</button>
+  </div>
+ </div>
+</body>
+</html>
