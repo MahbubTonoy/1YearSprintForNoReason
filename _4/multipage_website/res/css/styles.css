@@ -1,5 +1,63 @@
+/* choosen color
+ black: #000;
+ white: #fff;
+ offwhite: #f0f0f0;
+*/
+
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
 * {
  margin: 0;
  padding: 0;
  box-sizing: border-box;
+ font-family: 'Roboto', sans-serif;
 }
+
+
+/* navbar */
+nav {
+ width: 100%;
+ margin: 0 auto;
+ background: #000;
+}
+nav > div {
+ padding: 10px;
+ display: flex;
+ align-items: center;
+}
+nav img {
+ max-width: 150px;
+ margin-right: 50px;
+}
+nav ul {
+ flex: 1;
+ list-style-type: none;
+ cursor: default;
+}
+nav ul li {
+ display: inline-block;
+}
+nav ul li a {
+ color: #ccc;
+ text-decoration: none;
+ font-size: 18px;
+ font-weight: 400;
+ padding: 10px 20px;
+}
+.search-btn {
+ float: right;
+ color: #ccc;
+}
+nav a:hover {
+ color: #fff;
+}
+
+/* /navbar */
+
+/* centerized container */
+.container {
+ max-width: 1250px;
+ margin: 0 auto;
+}
+/* /centerized container */
