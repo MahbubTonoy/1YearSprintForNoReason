@@ -28,7 +28,7 @@ nav > div {
 }
 nav img {
  max-width: 150px;
- margin-right: 50px;
+ margin: 0 50px;
 }
 nav ul {
  flex: 1;
