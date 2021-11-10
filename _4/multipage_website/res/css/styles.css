@@ -13,7 +13,9 @@
  box-sizing: border-box;
  font-family: 'Roboto', sans-serif;
 }
-
+body {
+ background: #f0f0f0;
+}
 
 /* navbar */
 nav {
@@ -28,7 +30,7 @@ nav > div {
 }
 nav img {
  max-width: 150px;
- margin: 0 50px;
+ margin: 0 40px 0 10px;
 }
 nav ul {
  flex: 1;
@@ -46,8 +48,8 @@ nav ul li a {
  padding: 10px 20px;
 }
 .search-btn {
- float: right;
  color: #ccc;
+ margin: 0 15px;
 }
 nav a:hover {
  color: #fff;
@@ -57,7 +59,7 @@ nav a:hover {
 
 /* centerized container */
 .container {
- max-width: 1250px;
+ max-width: 1500px;
  margin: 0 auto;
 }
 
