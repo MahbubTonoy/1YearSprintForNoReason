@@ -17,6 +17,15 @@ body {
  background: #f0f0f0;
 }
 
+/* text styling */
+.text-center {
+ text-align: center;
+}
+.text-justify {
+ text-align: justify;
+}
+/* /text styling */
+
 /* navbar */
 nav {
  width: 100%;
@@ -64,3 +73,31 @@ nav a:hover {
 }
 
 /* /centerized container */
+
+
+/* header */
+.header {
+ margin: 10px 0 50px 0;
+ font-size: 40px;
+ padding-bottom: 10px;
+ border-bottom: 2px solid #000;
+ font-weight: 300;
+}
+/* /header */
+
+/* custom grid */
+.row {
+ display: flex;
+ width: 100%;
+}
+.col-sm {
+ width: 33.33%;
+}
+.col-lg {
+ width: 66.66%;
+}
+/* /custom grid */
+
+/* img thumbnail */
+
+/* /img thumbnail */

@@ -1,0 +1,28 @@
+/* members  */
+.members {
+ padding: 10px 20px;
+}
+.artists {
+ margin-bottom: 50px;
+}
+.members img {
+ width: 100%;
+}
+.member_info_left {
+ padding-right: 20px;
+}
+.member_info_right {
+ padding-left: 20px;
+}
+.member_name {
+ font-size: 35px;
+}
+.member_role {
+ font-size: 20px;
+ opacity: 0.5;
+ margin: 10px 0;
+}
+.member_details {
+ width: 100%;
+}
+/* /members  */
