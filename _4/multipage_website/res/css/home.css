@@ -92,3 +92,23 @@
  }
 }
 /* /slider */
+
+
+/* about */
+.about {
+ padding: 20px;
+ width: 100%;
+}
+.about img {
+ max-width: 300px;
+ padding: 0 10px;
+ float: right;
+}
+.about strong {
+ display: block;
+ margin: 20px 0 10px 0;
+}
+.about p {
+ margin-bottom: 15px;
+}
+/* /about */
