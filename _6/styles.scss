@@ -6,3 +6,12 @@
  box-sizing: border-box;
 }
 
+:root {
+ --container-max-width: 1500px;
+ --container-margin: 0 auto;
+}
+
+p {
+ max-width: var(--container-max-width);
+ margin: var(--container-margin);
+}
