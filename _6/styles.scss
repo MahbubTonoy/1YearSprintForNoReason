@@ -27,14 +27,16 @@ p {
 // color variable declaration
 
 
-$background-color: #ccc;
+$background-color: #eee;
 
 
 $header-font: 'Times New Roman', Times, serif;
 $main-font: georgia;
 
 $main-font-size: 18px;
-
+$nav-text: #404040;
+$nav-hover-bg: #404040;
+$nav-hover-text: #fff;
 
 
 body {
@@ -44,4 +46,28 @@ body {
 }
 h1 {
  font-family: $header-font;
+}
+
+
+nav {
+ padding: 10px;
+ ul {
+  list-style-type: none;
+  margin: 20px 0;
+  li {
+   display: inline-block;
+   margin: 0 10px;
+   a {
+    text-decoration: none;
+    color: $nav-text;
+    padding: 10px;
+    transition: all 0.1s linear;
+    border-radius: 3px;
+   }
+   a:hover {
+   color: $nav-hover-text;
+   background-color: $nav-hover-bg;
+   }
+  }
+ }
 }
