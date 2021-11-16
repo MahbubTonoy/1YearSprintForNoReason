@@ -6,12 +6,42 @@
  box-sizing: border-box;
 }
 
+// normal css variable declear
 :root {
  --container-max-width: 1500px;
  --container-margin: 0 auto;
 }
 
+
+//css variable usage
 p {
  max-width: var(--container-max-width);
  margin: var(--container-margin);
+}
+
+
+
+
+// SCSS
+
+// color variable declaration
+
+
+$background-color: #ccc;
+
+
+$header-font: 'Times New Roman', Times, serif;
+$main-font: georgia;
+
+$main-font-size: 18px;
+
+
+
+body {
+ background-color: $background-color;
+ font-family: $main-font;
+ font-size: $main-font-size;
+}
+h1 {
+ font-family: $header-font;
 }

@@ -1,1 +1,27 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+  --container-max-width: 1500px;
+  --container-margin: 0 auto;
+}
+
+p {
+  max-width: var(--container-max-width);
+  margin: var(--container-margin);
+}
+
+body {
+  background-color: #ccc;
+  font-family: georgia;
+  font-size: 18px;
+}
+
+h1 {
+  font-family: "Times New Roman", Times, serif;
+}
+/*# sourceMappingURL=styles.css.map */
