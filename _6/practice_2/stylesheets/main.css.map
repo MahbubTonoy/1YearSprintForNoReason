@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "ACAA,AAAA,CAAC,CAAC;EACD,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,UAAU,EAAE,UAAU;CACtB;;ADAD,AAAA,MAAM,CAAC;EACN,UAAU,EELD,OAAO;EFMhB,OAAO,EAAE,IAAI;CAIb;;AAND,AAGC,MAHK,CAGL,CAAC,CAAC;EGNF,SAAS,EHOW,IAAI;EGNxB,UAAU,EAAE,OAAO;EACnB,WAAW,EAAC,gEAAgE;CHM3E",
+    "sources": [
+        "main.scss",
+        "modules/_reset.scss",
+        "modules/_variables.scss",
+        "modules/mixins/_preset.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}

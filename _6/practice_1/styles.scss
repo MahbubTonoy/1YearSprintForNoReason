@@ -1,11 +1,6 @@
 // browser reset code
-
-* {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
-}
-
+@import "reset";
+// @import "test/test";
 // normal css variable declear
 :root {
  --container-max-width: 1500px;

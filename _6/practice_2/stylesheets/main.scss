@@ -1,0 +1,11 @@
+@import "modules/reset";
+@import "modules/variables";
+@import "modules/mixins/preset";
+
+.about {
+ background: $main-bg;
+ padding: 10px;
+ p {
+  @include paragraph(18px);
+ }
+}
