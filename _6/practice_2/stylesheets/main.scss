@@ -6,6 +6,22 @@
  background: $main-bg;
  padding: 10px;
  p {
-  @include paragraph(18px);
+  @include paragraph-style(16px);
  }
+}
+.btn {
+ border:0;
+ padding: 11px 24px;
+ color: #fff;
+ margin: 10px;
+ font-size: 20px;
+ cursor: pointer;
+}
+.btn_1 {
+ @extend .btn;
+ background: red;
+}
+.btn_2 {
+ @extend .btn;
+ background: green;
 }
