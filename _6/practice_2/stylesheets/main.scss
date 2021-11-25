@@ -25,3 +25,42 @@
  @extend .btn;
  background: green;
 }
+
+.habijabi {
+ @include fontFamily(courier);
+}
+
+.row {
+ // display: table;
+ width: 100%;
+ margin: 10px 0;
+}
+.row::after {
+ content: '';
+ clear: both;
+}
+[class*= "col-"] {
+ float: left;
+ padding: 5px;
+}
+[class*= "col-"]:nth-child(odd) {
+ background-color: #04970b;
+ color: #fff;
+}
+[class*= "col-"]:nth-child(even) {
+ background-color: #045097;
+ color: #fff;
+}
+
+@for $i from 1 through 12 {
+ 
+ .col-#{$i}{
+  width: (100%/12)*$i;
+ } 
+} 
+
+@each $colors in red, blue, green, white, black {
+ .#{$colors}-text {
+  color: $colors;
+ }
+}

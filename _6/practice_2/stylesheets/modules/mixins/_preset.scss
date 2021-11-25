@@ -3,3 +3,15 @@
  background: #f08f11;
  padding: 10px;
 }
+
+@mixin fontFamily($fontname) {
+ @if($fontname == "times") {
+  font-family: 'Times New Roman', Times, serif;
+ }
+ @else if($fontname == "courier") {
+  font-family: 'Courier New', Courier, monospace;
+ }
+ @else {
+  font-family: Arial, Helvetica, sans-serif;
+ }
+}
