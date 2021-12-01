@@ -1,8 +1,10 @@
-class Circumference {
+class Quad {
  constructor(height, width) {
   this.height = height;
   this.width = width;
-  this.circumference = (height+width)*2;
+ }
+ area() {
+  return this.height*this.width;
  }
  get getHeight() {
   return this.height;
@@ -10,22 +12,16 @@ class Circumference {
  get getWidth() {
   return this.width;
  }
- get result() {
-  return this.circumference;
- }
-
- set setHeight(height) {
-  this.height = height;
-  this.width = (this.circumference/2)-height;
- }
-
  set setWidth(width) {
   this.width = width;
-  this.height = (this.circumference/2)-width;
+ }
+ set setHeight(height) {
+  this.height = height;
  }
 }
 
-let circumference = new Circumference(10, 8);
-circumference.setHeight = 13;
-// console.log(circumference.getWidth);
-console.log(circumference);
+let quadrilateral = new Quad(95, 87);
+quadrilateral.setHeight = 100;
+quadrilateral.setWidth = 33;
+console.log(quadrilateral.getHeight);
+console.log(quadrilateral.getWidth);
