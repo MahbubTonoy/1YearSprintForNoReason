@@ -1,11 +1,9 @@
-const apiUrl = "http://localhost/api";
+const apiUrl = "demo.txt";
 
 function getFunciton() {
  fetch(apiUrl)
- .then((r)=>r.json())
- .then((json) => {
-  console.log(json);
- })
+ .then(x=> x.text())
+ .then(y => console.log(y));
 }
 
 getFunciton();
