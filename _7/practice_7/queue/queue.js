@@ -4,7 +4,7 @@ class Queue {
     this.queue = new Array(this.max);
     this.rear = 0;
   }
-  push(value) {
+  enqueue(value) {
    if(this.isMax) {
     console.log("ERROR: Queue Overflow");
     return false;
@@ -17,13 +17,13 @@ class Queue {
   get isEmpty() {
    return this.rear < 0;
   }
-  pop() {
+  dequeue() {
    if(this.rear <= 0) {
     console.log("ERROR: Queue have no Data");
     return false;
    }
    let item = this.queue[0];
-   for(let i=0; i<this.rear; i++) {
+   for(let i=0; i<this.rear-1; i++) {
     this.queue[i] = this.queue[i+1];
    }
    delete this.queue[--this.rear];

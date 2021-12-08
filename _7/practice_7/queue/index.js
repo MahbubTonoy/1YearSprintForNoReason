@@ -1,21 +1,29 @@
-let Queue = require("./queue");
-let queue = new Queue(10);
+// let Queue = require("./queue");
+// let queue = new Queue(10);
 
-queue.push(10);
-queue.push(20);
-queue.push(30);
-queue.push(40);
-queue.push(50);
-queue.push(60);
-queue.push(70);
-queue.push(80);
-queue.push(90);
-queue.push(100);
+// queue.enqueue(10);
+// queue.enqueue(20);
+// queue.enqueue(30);
+// queue.enqueue(40);
+// queue.enqueue(50);
+// queue.enqueue(60);
+// queue.enqueue(70);
+// queue.enqueue(80);
+// queue.enqueue(90);
+// queue.enqueue(100);
 
-console.log(queue.pop());
-console.log(queue.pop());
-console.log(queue.pop());
-queue.push(80);
-queue.push(90);
-queue.push(100);
-console.log(queue.queue);
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// // queue.enqueue(80);
+// // queue.enqueue(90);
+// // queue.enqueue(100);
+// console.log(queue.queue);
+
+let q = [];
+q.push(10);
+q.push(20);
+q.push(30);
+console.log(q);
+console.log(q.pop());
+console.log(q);
