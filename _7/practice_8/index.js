@@ -1,17 +1,11 @@
-// function arrayIteration(arr,callback) {
-//  for(let i=0; i<arr.length; i++) {
-//   if(callback === undefined) {
-//    return false;
-//   }
-//   callback(i, arr[i]);
-//  }
-// }
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
-// let arr = [1,2,3,4,5];
-// arrayIteration(arr, (i, value)=>{
-//  console.log(`Index: ${i}, Value ${value}`);
-// })
-let arr = [1,2,3,4,5];
-arr.forEach((value, index)=>{
- console.log(value, index);
-});
+function arrForEach(arr, callback) {
+ for (i = 0; i < arr.length; i++) {
+  callback(arr[i]);
+ }
+}
+
+arrForEach(arr, (item) => {
+ console.log(item);
+})
