@@ -5,9 +5,9 @@ let matrix = [
 ];
 
 let sum = matrix.reduce((acc, cur) => {
- return acc+cur.reduce((acc2, cur2) => {
-  return acc2 + cur2;
- }, 0);
+ return acc + cur.reduce((acc2, cur2) => acc2 + cur2);
 }, 0);
+
+
 
 console.log(sum);
