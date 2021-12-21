@@ -1,0 +1,19 @@
+@mixin header {
+ font-size: 30px;
+ font-weight: bold;
+ color: #404040;
+ margin: 5px 10px;
+ display: block;
+}
+
+@mixin fontColor($color) {
+ @if($color == "red") {
+  color: #ffa0a0;
+ }
+ @else if($color == "blue") {
+  color: #a0a0ff;
+ }
+ @else if($color == "green") {
+  color: #a0ffa0;
+ }
+}

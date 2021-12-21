@@ -1,11 +1,9 @@
+@import "modules/reset";
+@import "modules/mixins";
+
 $custom: #e6c5c5;
 
 
-* {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
-}
 :root {
  --custom-bg: #28b336;
  --custom-color: #fff;
@@ -31,4 +29,34 @@ body {
   text-align: justify;
   // font-weight: 400;
  }
+}
+
+.mixinHeader {
+ @include header;
+}
+
+.mixinHeader2 {
+ @extend .mixinHeader;
+ color: blue;
+}
+
+.ifElse {
+ @include fontColor('red');
+ font-size: 20px;
+}
+
+@for $i from 1 through 12 {
+ .col-#{$i} {
+  width: (100% / 12) * $i;
+ }
+}
+
+$j: 1;
+
+@while ($j <= 12) {
+ .col-2-#{$j} {
+  width: (100%/12)*$j;
+ }
+
+ $j: $j+1;
 }
