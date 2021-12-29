@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.section {
+  padding: 10px;
+}
+
+.section div {
+  height: 100%;
+  width: 100%;
+}
+
+.section_1 {
+  background: #eb6b6b;
+  color: #fff;
+}
+
+.section_2 {
+  background: #659911;
+  color: #fff;
+}
+
+.section_3 {
+  background: #122a96;
+  color: #fff;
+}
+
+.section_4 {
+  background: #b3c41c;
+  color: #000;
+}
+
+.innerSection {
+  height: 100px !important;
+  width: 100px !important;
+  overflow: scroll;
+}
+/*# sourceMappingURL=styles.css.map */

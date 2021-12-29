@@ -1,0 +1,30 @@
+@import "./modules/reset";
+@import "./modules/bg";
+
+
+.section {
+ padding: 10px;
+ div {
+ height: 100%;
+ width: 100%;
+ }
+}
+
+.section_1 {
+ @include bg(#eb6b6b, #fff);
+}
+.section_2 {
+ @include bg(#659911, #fff);
+}
+.section_3 {
+ @include bg(#122a96, #fff);
+}
+.section_4 {
+ @include bg(#b3c41c, #000);
+}
+
+.innerSection {
+ height: 100px !important;
+ width: 100px !important;
+ overflow: scroll;
+}

@@ -1,0 +1,4 @@
+@mixin bg($bgcolor: #fff, $text: #000) {
+ background: $bgcolor;
+ color: $text;
+}
