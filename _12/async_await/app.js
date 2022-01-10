@@ -1,11 +1,21 @@
-let waiting = () => {
- let date = new Date().getTime();
- while(date+3000 >= new Date().getTime()) {
-
+const promise = new Promise((resolve, reject) => {
+ let meetingOngoing = true;
+ if(meetingOngoing) {
+  reject(new Error("an  Meeting is already running. please wait intil the meeting has been finished"));
  }
- console.log("waiting function");
-}
+ else {
+  resolve({
+   name: "A new Meeting",
+   topic: "Are we dead or alive",
+   place: "in space"
+  });
+ }
+})
 
-console.log("first run");
-waiting();
-console.log("last run");
+promise
+ .then((data)=>{
+  console.log(`an urgent meeting are currently hosting in ${data.place} about "${data.topic}"`);
+ })
+ .catch((err)=> {
+  console.log(err.message);
+ })
