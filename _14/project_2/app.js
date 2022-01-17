@@ -7,20 +7,13 @@
 
 // dependencies
 const http = require("http");
-const fs = require("fs");
 
 const {handle} = require("./modules/reqResHandler");
+const environment = require("./modules/environment");
 
-//module scaffoldings
-let app = {};
-
-//app configurations
-app.config = {
- port: 3000
-}
 
 //start the server
 let server = http.createServer(handle);
-server.listen(app.config.port, ()=>{
- console.log(`Server has been started in port: ${app.config.port}`)
+server.listen(environment.port, ()=>{
+ console.log(`Server has been started in port: ${environment.port}`);
 });
