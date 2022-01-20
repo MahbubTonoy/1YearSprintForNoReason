@@ -13,5 +13,14 @@ const path = require("path");
 const lib = {}
 
 //file open operations
-console.log(path.join(__dirname,"/../.data"));
-// fs.open()
+lib.workingPath = path.join(__dirname,"/../.data");
+
+lib.create = (dir, file, data, callback)=>{
+ fs.open(lib.workingPath+dir+"/"+file+".json", 'wx', (err,fileDescriptor)=>{
+  if(!err && fileDescriptor) {
+   console.log(fileDescriptor);
+  } else {
+   console.log("failed");
+  }
+ });
+}
