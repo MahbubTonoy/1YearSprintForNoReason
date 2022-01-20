@@ -30,7 +30,7 @@ reqResHandler.handle = (req, res) => {
       statusCode = typeof statusCode === "number" ? statusCode : 500;
       payLoad = typeof payLoad === "object" ? payLoad : {};
       res.writeHead(statusCode);
-      console.log(data.toString());
+      // console.log(data.toString());
       res.write(JSON.stringify(payLoad));
     });
     res.end();

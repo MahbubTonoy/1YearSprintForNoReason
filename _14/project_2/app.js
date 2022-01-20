@@ -10,6 +10,12 @@ const http = require("http");
 
 const {handle} = require("./modules/reqResHandler");
 const environment = require("./modules/environment");
+const data = require("./lib/dataCRUD");
+
+//test file, i'll remove this later
+data.create("test","test", {"country": "Bangladesh", "language" : "Bangla"}, (err)=>{
+ // console.log(`The Error Was ${err}`);
+});
 
 
 //start the server
