@@ -14,8 +14,30 @@ const data = require("./lib/dataCRUD");
 
 //test file, i'll remove this later
 data.create("test","test", {"country": "Bangladesh", "language" : "Bangla"}, (err)=>{
- // console.log(`The Error Was ${err}`);
+ if(!err) {
+  console.log("Successfully Done");
+ } else {
+  console.log("Successfully Failed");
+ }
 });
+
+//test read file. this will remove too.
+// data.read("test", "test", (err,data)=>{
+//  if(!err) {
+//   console.log(JSON.parse(data));
+//  } else {
+//   console.log(err);
+//  }
+// });
+
+//test update file, will be removed
+data.update("test","test",{country: "England", language:"English"}, (err)=>{
+ if(!err) {
+  console.log("Successfully Done");
+ } else {
+  console.log(err);
+ }
+})
 
 
 //start the server
