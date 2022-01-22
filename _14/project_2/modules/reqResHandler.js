@@ -10,7 +10,6 @@
 const url = require("url");
 
 const routeHandler = require("./routeHandler");
-const { notFound } = require("./routeHandler/routes/404");
 
 // module scaffolding
 let reqResHandler = {};
@@ -21,16 +20,16 @@ reqResHandler.handle = (req, res) => {
     ? routeHandler[path]
     : routeHandler["notFound"];
 
-  let data = [];
+  let reqHeader = [];
   req.on("data", (buffer) => {
-    data.push(buffer);
+    reqHeader.push(buffer);
   });
   req.on("end", () => {
-    route(data, res, (statusCode, payLoad) => {
+    console.log(reqHeader.toString());
+    route(req, res, (statusCode, payLoad) => {
       statusCode = typeof statusCode === "number" ? statusCode : 500;
       payLoad = typeof payLoad === "object" ? payLoad : {};
-      res.writeHead(statusCode);
-      // console.log(data.toString());
+      res.writeHead(statusCode, {'Content-Type':'text/json'});
       res.write(JSON.stringify(payLoad));
     });
     res.end();

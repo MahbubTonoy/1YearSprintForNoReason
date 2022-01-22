@@ -8,13 +8,15 @@
 // dependencies
 const {test} = require("./routes/test");
 const {notFound} = require("./routes/404");
+const {user} = require("./routes/userHandler.js");
 
 
 
 // module scaffolding
 let routes = {
  test,
- notFound
+ notFound,
+ user
 }
 
 module.exports = routes;

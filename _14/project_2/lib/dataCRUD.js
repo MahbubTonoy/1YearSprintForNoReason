@@ -66,9 +66,9 @@ lib.update = (dir, file, data, callback) => {
  fs.open(
   lib.workingPath + dir + "/" + file + ".json", 'r+', (err, fileDescriptor)=>{
    if(!err) {
-    fs.truncate(fileDescriptor, (err)=>{
+    fs.ftruncate(fileDescriptor, (err)=>{
      if(!err) {
-      fs.writeFile(fileDescriptor, data, (err)=>{
+      fs.writeFile(fileDescriptor, JSON.stringify(data), (err)=>{
        if(!err) {
         callback(false);
        } else {
@@ -84,5 +84,22 @@ lib.update = (dir, file, data, callback) => {
    }
   })
 }
+
+
+lib.delete = (dir, file, callback) => {
+  fs.unlink(lib.workingPath + dir + "/" + file + ".json", (err) => {
+    if(!err) {
+      fs.rmdir(lib.workingPath+dir+"/", (err)=>{
+        if(!err) {
+          callback(false);
+        } else {
+          callback("File Deleted, But Failed to delete the folder");
+        }
+      })
+    } else {
+      callback("Failed To Delete The File");
+    }
+  })
+};
 
 module.exports = lib;
