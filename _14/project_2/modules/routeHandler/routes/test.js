@@ -8,7 +8,7 @@
 // module scaffoldings
 let test = {};
 
-test.test = (req, res, callback) => {
+test.test = (reqData, callback) => {
   callback(200, {
    message: "Connection Estableshed Successfully!"
   });

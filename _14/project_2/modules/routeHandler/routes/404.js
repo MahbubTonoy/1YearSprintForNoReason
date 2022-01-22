@@ -6,12 +6,12 @@
  */
 
 // module scaffoldings
-let _404 = {};
+let notFound = {};
 
-_404.notFound = (req, res, callback) => {
+notFound.notFound = (reqData, callback) => {
   callback(404, {
    message: "Route Not Found"
   });
 };
 
-module.exports = _404;
+module.exports = notFound;
