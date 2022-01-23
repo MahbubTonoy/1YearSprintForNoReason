@@ -38,6 +38,7 @@ lib.create = (dir, file, data, callback) => {
         });
       } else {
         callback("Failed To Open File.");
+        console.log(err);
       }
     }
   );
@@ -84,13 +85,7 @@ lib.update = (dir, file, data, callback) => {
 lib.delete = (dir, file, callback) => {
   fs.unlink(lib.workingPath + dir + "/" + file + ".json", (err) => {
     if (!err) {
-      fs.rmdir(lib.workingPath + dir + "/", (err) => {
-        if (!err) {
-          callback(false);
-        } else {
-          callback("File Deleted, But Failed to delete the folder");
-        }
-      });
+      callback(false);
     } else {
       callback("Failed To Delete The File");
     }

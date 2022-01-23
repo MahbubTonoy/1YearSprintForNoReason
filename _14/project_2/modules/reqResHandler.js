@@ -22,12 +22,14 @@ reqResHandler.handle = (req, res) => {
     : routeHandler["notFound"];
   let method = (req.method).toLowerCase();
   let reqBody = '';
+  let queries = url.parse(req.url, true).query;
 
   let reqData = {
     path,
     route,
     reqBody,
-    method
+    method,
+    queries
   }
   req.on("data", (buffer) => {
     reqBody += buffer;
@@ -39,8 +41,8 @@ reqResHandler.handle = (req, res) => {
       payLoad = typeof payLoad === "object" ? payLoad : {};
       res.writeHead(statusCode, {'Content-Type':'text/json'});
       res.write(JSON.stringify(payLoad));
+      res.end();
     });
-    res.end();
   });
 };
 
