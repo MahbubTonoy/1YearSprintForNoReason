@@ -16,90 +16,85 @@ const lib = {};
 lib.workingPath = path.join(__dirname, "/../.data/");
 
 lib.create = (dir, file, data, callback) => {
-  if (!fs.existsSync(lib.workingPath + dir)) {
-    fs.mkdir(lib.workingPath + dir, (err) => {
-      if (!err) {
 
-      } else {
-        callback("Failed To Create Folder.");
-      }
-      fs.open(
-        lib.workingPath + dir + "/" + file + ".json",
-        "wx",
-        (err, fileDescriptor) => {
-          if (!err && fileDescriptor) {
-            let stringifiedData = JSON.stringify(data);
-            fs.writeFile(fileDescriptor, stringifiedData, (err) => {
+  fs.open(
+    lib.workingPath + dir + "/" + file + ".json",
+    "wx",
+    (err, fileDescriptor) => {
+      if (!err && fileDescriptor) {
+        let stringifiedData = JSON.stringify(data);
+        fs.writeFile(fileDescriptor, stringifiedData, (err) => {
+          if (!err) {
+            fs.close(fileDescriptor, (err) => {
               if (!err) {
-                fs.close(fileDescriptor, (err) => {
-                  if (!err) {
-                    callback(false);
-                  } else {
-                    callback("Error Closing The New File");
-                  }
-                });
+                callback(false);
               } else {
-                callback("Error Writing the file");
+                callback("Error Closing The New File");
               }
             });
           } else {
-            callback("Failed To Open File.");
+            callback("Error Writing the file");
           }
-        }
-      );
-    });
-  } else {
-    callback("Folder May Already Exists!");
-  }
+        });
+      } else {
+        callback("Failed To Open File.");
+      }
+    }
+  );
 };
-
 
 //read file
 lib.read = (dir, file, callback) => {
- fs.readFile(lib.workingPath + dir + "/" + file + ".json", 'utf-8', (err, data)=>{
-  callback(err,data);
- })
-}
+  fs.readFile(
+    lib.workingPath + dir + "/" + file + ".json",
+    "utf-8",
+    (err, data) => {
+      callback(err, data);
+    }
+  );
+};
 
 //update file
 lib.update = (dir, file, data, callback) => {
- fs.open(
-  lib.workingPath + dir + "/" + file + ".json", 'r+', (err, fileDescriptor)=>{
-   if(!err) {
-    fs.ftruncate(fileDescriptor, (err)=>{
-     if(!err) {
-      fs.writeFile(fileDescriptor, JSON.stringify(data), (err)=>{
-       if(!err) {
-        callback(false);
-       } else {
+  fs.open(
+    lib.workingPath + dir + "/" + file + ".json",
+    "r+",
+    (err, fileDescriptor) => {
+      if (!err) {
+        fs.ftruncate(fileDescriptor, (err) => {
+          if (!err) {
+            fs.writeFile(fileDescriptor, JSON.stringify(data), (err) => {
+              if (!err) {
+                callback(false);
+              } else {
+                callback(err);
+              }
+            });
+          } else {
+            callback(err);
+          }
+        });
+      } else {
         callback(err);
-       }
-      });
-     } else {
-      callback(err);
-     }
-    })
-   } else {
-    callback(err);
-   }
-  })
-}
-
+      }
+    }
+  );
+};
 
 lib.delete = (dir, file, callback) => {
   fs.unlink(lib.workingPath + dir + "/" + file + ".json", (err) => {
-    if(!err) {
-      fs.rmdir(lib.workingPath+dir+"/", (err)=>{
-        if(!err) {
+    if (!err) {
+      fs.rmdir(lib.workingPath + dir + "/", (err) => {
+        if (!err) {
           callback(false);
         } else {
           callback("File Deleted, But Failed to delete the folder");
         }
-      })
+      });
     } else {
       callback("Failed To Delete The File");
     }
-  })
+  });
 };
 
 module.exports = lib;

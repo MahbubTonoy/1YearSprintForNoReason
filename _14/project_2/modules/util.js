@@ -5,6 +5,10 @@
 * Date: 22 Jan 2022
 */
 
+//dependencies
+const crypto = require("crypto");
+const env = require("./environment");
+
 // module scaffoldings
 let util = {};
 
@@ -18,5 +22,16 @@ util.jsonCheck = (json) => {
  return filteredJSON;
 }
 
+util.hash = (string) => {
+ if(typeof string === 'string' && string.length !== 0) {
+  const hash = crypto
+     .createHmac('sha256', env.secreateKey)
+     .update(string)
+     .digest('hex');
+
+  return hash;
+ }
+ return false;
+}
 
 module.exports = util;
