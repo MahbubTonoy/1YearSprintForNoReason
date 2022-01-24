@@ -9,6 +9,7 @@
 const {test} = require("./routes/test");
 const {notFound} = require("./routes/404");
 const {user} = require("./routes/userHandler.js");
+const {token} = require("./routes/tokenHandler.js");
 
 
 
@@ -16,7 +17,8 @@ const {user} = require("./routes/userHandler.js");
 let routes = {
  test,
  notFound,
- user
+ user,
+ token
 }
 
 module.exports = routes;
