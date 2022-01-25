@@ -23,13 +23,15 @@ reqResHandler.handle = (req, res) => {
   let method = (req.method).toLowerCase();
   let reqBody = '';
   let queries = url.parse(req.url, true).query;
+  let reqHead = req.headers;
 
   let reqData = {
     path,
     route,
     reqBody,
     method,
-    queries
+    queries,
+    reqHead
   }
   req.on("data", (buffer) => {
     reqBody += buffer;

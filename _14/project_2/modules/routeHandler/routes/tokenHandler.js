@@ -108,7 +108,6 @@ token._token.put = (requestProperties, callback) => {
           });
         } else {
           callback(400, { error: "token validity has been over" });
-          console.log(Date.now() + 60 * 60 * 1000);
         }
       } else {
         callback(400, { error: "Token Not Found" });
@@ -138,5 +137,19 @@ token._token.delete = (requestProperties, callback) => {
     }
   });
 };
+
+token._token.verify = (token, phone, callback) => {
+  dataCRUD.read('tokens', token, (err, data)=> {
+    if(!err && data) {
+      if(jsonCheck(data).phone === phone && jsonCheck(data).tokenExpires > Date.now()) {
+        callback(true);
+      } else {
+        callback(false);
+      }
+    } else {
+      callback(false);
+    }
+  });
+}
 
 module.exports = token;

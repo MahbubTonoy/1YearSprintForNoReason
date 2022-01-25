@@ -7,8 +7,8 @@
 
 //dependencies
 const dataCRUD = require("../../../lib/dataCRUD");
-const { hash } = require("../../util");
-const { jsonCheck } = require("../../util");
+const { hash, jsonCheck } = require("../../util");
+const tokenHandler = require("./tokenHandler");
 // module scaffoldings
 let user = {};
 
@@ -85,13 +85,27 @@ user._users.get = (requestProperties, callback) => {
       ? requestProperties.queries.phone
       : false;
   if (phone) {
-    dataCRUD.read("users", phone, (err, data) => {
-      if (!err && data) {
-        data = jsonCheck(data);
-        delete data.password;
-        callback(200, data);
+    let token =
+      typeof requestProperties.reqHead.token === "string" &&
+      requestProperties.reqHead.token.length === 20
+        ? requestProperties.reqHead.token
+        : false;
+
+    tokenHandler._token.verify(token, phone, (isValid) => {
+      if (isValid) {
+        dataCRUD.read("users", phone, (err, data) => {
+          if (!err && data) {
+            data = jsonCheck(data);
+            delete data.password;
+            callback(200, data);
+          } else {
+            callback(404, { error: "Requested User Not Found" });
+          }
+        });
       } else {
-        callback(404, { error: "Requested User Not Found" });
+        callback(403, {
+          error: "You don't have authentication for this action",
+        });
       }
     });
   } else {
@@ -120,29 +134,42 @@ user._users.put = (requestProperties, callback) => {
       : false;
   if (phone) {
     if (firstName || lastName || password) {
-      dataCRUD.read("users", phone, (err, data) => {
-        if (!err && data) {
-          let userData = JSON.parse(data);
-          if (firstName) {
-            userData.firstName = firstName;
-          }
-          if (lastName) {
-            userData.lastName = lastName;
-          }
-          if (password) {
-            userData.password = hash(password);
-          }
-          dataCRUD.update("users", phone, userData, (err) => {
-            if (!err) {
-              callback(200, { message: "Successfully Updated New Data" });
-            } else {
-              callback(500, {
-                error: "something went wrong, please try again",
+      let token =
+        typeof requestProperties.reqHead.token === "string" &&
+        requestProperties.reqHead.token.length === 20
+          ? requestProperties.reqHead.token
+          : false;
+      tokenHandler._token.verify(token, phone, (isValid) => {
+        if (isValid) {
+          dataCRUD.read("users", phone, (err, data) => {
+            if (!err && data) {
+              let userData = JSON.parse(data);
+              if (firstName) {
+                userData.firstName = firstName;
+              }
+              if (lastName) {
+                userData.lastName = lastName;
+              }
+              if (password) {
+                userData.password = hash(password);
+              }
+              dataCRUD.update("users", phone, userData, (err) => {
+                if (!err) {
+                  callback(200, { message: "Successfully Updated New Data" });
+                } else {
+                  callback(500, {
+                    error: "something went wrong, please try again",
+                  });
+                }
               });
+            } else {
+              callback(400, { error: "your requested phone number not found" });
             }
           });
         } else {
-          callback(400, { error: "your requested phone number not found" });
+          callback(403, {
+            error: "You don't have authentication for this action",
+          });
         }
       });
     } else {
@@ -162,24 +189,44 @@ user._users.delete = (requestProperties, callback) => {
     typeof requestProperties.body.password === "string"
       ? requestProperties.body.password.trim()
       : false;
-  dataCRUD.read('users', phone, (err, data) => {
-    if(!err && data) {
-      let userData = jsonCheck(data);
-      if(hash(password) === userData.password) {
-        dataCRUD.delete('users', phone, (err)=>{
-          if(!err) {
-            callback(200, {message: "user deleted successfully"});
+
+  if (phone && password) {
+    let token =
+      typeof requestProperties.reqHead.token === "string" &&
+      requestProperties.reqHead.token.length === 20
+        ? requestProperties.reqHead.token
+        : false;
+    tokenHandler._token.verify(token, phone, (isValid) => {
+      if (isValid) {
+        dataCRUD.read("users", phone, (err, data) => {
+          if (!err && data) {
+            let userData = jsonCheck(data);
+            if (hash(password) === userData.password) {
+              dataCRUD.delete("users", phone, (err) => {
+                if (!err) {
+                  callback(200, { message: "user deleted successfully" });
+                } else {
+                  callback(500, {
+                    error: "something went wrong, please try again",
+                  });
+                }
+              });
+            } else {
+              callback(400, { error: "Password Doesn't matched" });
+            }
           } else {
-            callback(500, {error: "something went wrong, please try again"});
+            callback(404, { error: "your requested user not found" });
           }
-        })
+        });
       } else {
-        callback(400, {error: "Password Doesn't matched"});
+        callback(403, {
+          error: "You don't have authentication for this action",
+        });
       }
-    } else {
-      callback(404, {error: "your requested user not found"});
-    }
-  })
+    });
+  } else {
+    callback(400, { error: "you have problem on your request" });
+  }
 };
 
 module.exports = user;

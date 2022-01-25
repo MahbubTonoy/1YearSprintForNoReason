@@ -11,12 +11,14 @@ let environment = {};
 environment.staging = {
   port: 3000,
   envName: "staging",
-  secreateKey: "stupid"
+  secreateKey: "stupid",
+  maxCheck: 5
 };
 environment.production = {
   port: 5000,
   envName: "production",
-  secreateKey: "idiot"
+  secreateKey: "idiot",
+  maxCheck: 5
 };
 
 let processEnv =
