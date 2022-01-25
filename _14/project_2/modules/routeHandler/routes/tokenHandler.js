@@ -9,7 +9,7 @@
 const dataCRUD = require("../../../lib/dataCRUD");
 const { hash } = require("../../util");
 const { jsonCheck } = require("../../util");
-const { randomStr } = require('../../util');
+const { randomStr } = require("../../util");
 // module scaffoldings
 let token = {};
 
@@ -37,22 +37,22 @@ token._token.post = (requestProperties, callback) => {
       : false;
   if (phone && password) {
     dataCRUD.read("users", phone, (err, data) => {
-     let userData = jsonCheck(data);
+      let userData = jsonCheck(data);
       if (userData.password === hash(password)) {
-       let tokenID = randomStr(20);
-       let tokenExpires = Date.now() + (60*60*1000);
-       let tokenObject = {
-        phone,
-        id: tokenID,
-        tokenExpires
-       }
-       dataCRUD.create('tokens', tokenID, tokenObject, (err)=>{
-        if(!err) {
-         callback(200, tokenObject);
-        } else {
-         callback(500, { error: "Failed To Generate Token Object" });
-        }
-       });
+        let tokenID = randomStr(20);
+        let tokenExpires = Date.now() + 60 * 60 * 1000;
+        let tokenObject = {
+          phone,
+          id: tokenID,
+          tokenExpires,
+        };
+        dataCRUD.create("tokens", tokenID, tokenObject, (err) => {
+          if (!err) {
+            callback(200, tokenObject);
+          } else {
+            callback(500, { error: "Failed To Generate Token Object" });
+          }
+        });
       } else {
         callback(400, { error: "Password isn't valid" });
       }
@@ -62,45 +62,81 @@ token._token.post = (requestProperties, callback) => {
   }
 };
 token._token.get = (requestProperties, callback) => {
- let token =
- typeof requestProperties.queries.token === "string" &&
- requestProperties.queries.token.length === 20
-   ? requestProperties.queries.token
-   : false;
-if (token) {
- dataCRUD.read("tokens", token, (err, data) => {
-   if (!err && data) {
-     data = jsonCheck(data);
-     callback(200, data);
-   } else {
-     callback(404, { error: "Requested Token Not Found" });
-   }
- });
-} else {
- callback(404, { error: "Requested Token Not Found" });
-}
+  let token =
+    typeof requestProperties.queries.token === "string" &&
+    requestProperties.queries.token.length === 20
+      ? requestProperties.queries.token
+      : false;
+  if (token) {
+    dataCRUD.read("tokens", token, (err, data) => {
+      if (!err && data) {
+        data = jsonCheck(data);
+        callback(200, data);
+      } else {
+        callback(404, { error: "Requested Token Not Found" });
+      }
+    });
+  } else {
+    callback(404, { error: "Requested Token Not Found" });
+  }
 };
-
-
 
 token._token.put = (requestProperties, callback) => {
- let token =
- typeof requestProperties.queries.token === "string" &&
- requestProperties.queries.token.length === 20
-   ? requestProperties.queries.token
-   : false;
-  
- let extend = typeof requestProperties.queries.extend === "boolean"
-   ? requestProperties.queries.extend
-   : false;
+  let token =
+    typeof requestProperties.body.token === "string" &&
+    requestProperties.body.token.length === 20
+      ? requestProperties.body.token
+      : false;
 
-   if(token && extend) {
+  let extend =
+    typeof requestProperties.body.extend === "boolean"
+      ? requestProperties.body.extend
+      : false;
 
-   } else {
+  if (token && extend) {
+    dataCRUD.read("tokens", token, (err, data) => {
+      if (!err) {
+        let tokenData = jsonCheck(data);
+        if (tokenData.tokenExpires > Date.now()) {
+          tokenData.tokenExpires += Date.now() + 60 * 60 * 1000;
+          dataCRUD.update("tokens", token, tokenData, (err) => {
+            if (!err) {
+              callback(200, { message: "Expiry Date Has Been Updated" });
+            } else {
+              callback(500, { error: "something went wrong" });
+            }
+          });
+        } else {
+          callback(400, { error: "token validity has been over" });
+          console.log(Date.now() + 60 * 60 * 1000);
+        }
+      } else {
+        callback(400, { error: "Token Not Found" });
+      }
+    });
+  } else {
     callback(400, { error: "you have a problem in your request" });
-   }
-
+  }
 };
-token._token.delete = (requestProperties, callback) => {};
+token._token.delete = (requestProperties, callback) => {
+  let token =
+    typeof requestProperties.queries.token === "string" &&
+    requestProperties.queries.token.trim().length === 20
+      ? requestProperties.queries.token.trim()
+      : false;
+  dataCRUD.read("tokens", token, (err, data) => {
+    if (!err && data) {
+      dataCRUD.delete("tokens", token, (err) => {
+        if (!err) {
+          callback(200, { message: "token deleted successfully" });
+        } else {
+          callback(500, { error: "something went wrong, please try again" });
+        }
+      });
+    } else {
+      callback(404, { error: "your requested token not found" });
+    }
+  });
+};
 
 module.exports = token;
