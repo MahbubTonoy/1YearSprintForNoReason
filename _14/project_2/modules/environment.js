@@ -12,13 +12,23 @@ environment.staging = {
   port: 3000,
   envName: "staging",
   secreateKey: "stupid",
-  maxCheck: 5
+  maxCheck: 5,
+  twilioData: {
+    from: "+16067557034",
+    accountSid: 'ACeb4badf4997355b69b7f577b19201490',
+    authToken: '196fd97637a6b0c2fe31ea4e3814821f'
+  }
 };
 environment.production = {
   port: 5000,
   envName: "production",
   secreateKey: "idiot",
-  maxCheck: 5
+  maxCheck: 5,
+  twilioData: {
+    from: "+16067557034",
+    accountSid: 'ACeb4badf4997355b69b7f577b19201490',
+    authToken: '196fd97637a6b0c2fe31ea4e3814821f'
+  }
 };
 
 let processEnv =

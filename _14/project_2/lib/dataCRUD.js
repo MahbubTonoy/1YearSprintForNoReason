@@ -92,4 +92,17 @@ lib.delete = (dir, file, callback) => {
   });
 };
 
+lib.list = (dir, callback)=>{
+  fs.readdir(lib.workingPath + dir+ '/', (err, fileNames)=>{
+    if(!err && fileNames && fileNames.length > 0) {
+      let trimmedFileNames = fileNames.reduce((acc, cur)=>{
+        return acc.push(cur.replace(".json", ""));
+      }, []);
+      callback(false, trimmedFileNames);
+    } else {
+      callback("error reading directory");
+    }
+  })
+}
+
 module.exports = lib;

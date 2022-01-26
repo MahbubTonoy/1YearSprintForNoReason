@@ -6,15 +6,19 @@
 */
 
 // dependencies
-const http = require("http");
+const server = require("./modules/server");
+const workers = require("./modules/workers");
 
-const {handle} = require("./modules/reqResHandler");
-const environment = require("./modules/environment");
-const data = require("./lib/dataCRUD");
+//modules scaffoldings
+const app = {};
 
+app.init = () => {
+ //start the server
+ server.start();
 
-//start the server
-let server = http.createServer(handle);
-server.listen(environment.port, ()=>{
- console.log(`Server has been started in port: ${environment.port}`);
-});
+ //start the workers
+ workers.start();
+}
+
+//start the app
+app.init();

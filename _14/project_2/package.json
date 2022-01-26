@@ -6,9 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=staging nodemon app",
-    "production" : "NODE_ENV=production nodemon app"
+    "production": "NODE_ENV=production nodemon app"
   },
   "keywords": [],
   "author": "Mahbub Tonoy",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "twilio": "^3.73.0"
+  }
 }
