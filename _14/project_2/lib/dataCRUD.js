@@ -96,7 +96,8 @@ lib.list = (dir, callback)=>{
   fs.readdir(lib.workingPath + dir+ '/', (err, fileNames)=>{
     if(!err && fileNames && fileNames.length > 0) {
       let trimmedFileNames = fileNames.reduce((acc, cur)=>{
-        return acc.push(cur.replace(".json", ""));
+        acc.push(cur.replace(".json", ""))
+        return acc;
       }, []);
       callback(false, trimmedFileNames);
     } else {

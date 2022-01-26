@@ -22,9 +22,7 @@ notifications.sendNotifications = (phone, msg, callback) => {
     from: twilioData.from, // From a valid Twilio number
   })
   .then((message) => {
-    if(message) {
-      callback(message.sid);
-    }
+    callback(false, message.sid);
   });
 };
 
