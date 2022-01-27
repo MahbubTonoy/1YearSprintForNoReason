@@ -1,0 +1,15 @@
+{
+  "name": "practice_7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"nodemon index"
+  },
+  "keywords": [],
+  "author": "Mahbub Tonoy",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
