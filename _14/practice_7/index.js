@@ -1,13 +1,12 @@
-const express = require('express');
+const express = require("express");
+const cookie = require("cookie-parser");
 
 const app = express();
+app.use(cookie());
 
-app.set("view engine", "ejs");
-
-app.use(express.static("views/public"));
-
-app.get("/", (req,res)=>{
- res.render("index");
-})
+app.get("*", (req, res) => {
+ console.log(req.cookies);
+  res.send("Hello World");
+}); 
 
 app.listen(3000);
