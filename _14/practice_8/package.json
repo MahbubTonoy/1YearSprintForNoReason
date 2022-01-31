@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
   },
   "keywords": [],
   "author": "Mahbub Tonoy",
   "license": "MIT",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "express": "^4.17.2"
   }
 }
