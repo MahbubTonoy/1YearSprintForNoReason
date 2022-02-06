@@ -1,0 +1,27 @@
+@import "./modules/colors";
+@import "./modules/font";
+@import "./modules/reset";
+
+body {
+ background: $background-color;
+}
+
+header {
+ background-color: $header-background;
+ color: $header-text;
+ padding: 20px;
+ .hero_area {
+  margin: 10px 0;
+  p {
+   text-align: justify;
+  }
+  button {
+   margin: 15px 0;
+   padding: 10px 20px;
+   background: $button-background;
+   @include font(16px);
+   color: $header-text;
+   border: 0;
+  }
+ }
+}

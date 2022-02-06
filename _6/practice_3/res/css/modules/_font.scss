@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+@mixin font ($fontSize){
+ @if($fontSize) {
+  font-size:  $fontSize;
+ }
+ @else {
+  font-size: 16px;
+ }
+ 
+ // @if($font) {
+ //  font-family: k$font;
+ // }
+ // @else {
+ //  font-family: 'Inter', sans-serif;
+ // }
+
+}
