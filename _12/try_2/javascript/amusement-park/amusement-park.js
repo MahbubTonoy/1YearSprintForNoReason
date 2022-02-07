@@ -11,6 +11,11 @@
  */
 export function createVisitor(name, age, ticketId) {
   // throw new Error('Please implement the createVisitor function.');
+  return {
+    name,
+    age,
+    ticketId,
+  };
 }
 
 /**
@@ -21,6 +26,8 @@ export function createVisitor(name, age, ticketId) {
  */
 export function revokeTicket(visitor) {
   // throw new Error('Please implement the revokeTicket function.');
+  visitor.ticketId = null;
+  return visitor;
 }
 
 /**
@@ -32,6 +39,13 @@ export function revokeTicket(visitor) {
  */
 export function ticketStatus(tickets, ticketId) {
   // throw new Error('Please implement the ticketStatus function.');
+  if (tickets[ticketId]) {
+    return "sold to " + tickets[ticketId];
+  }
+  if (tickets[ticketId] === null) {
+    return "not sold";
+  }
+  return "unknown ticket id";
 }
 
 /**
@@ -44,6 +58,15 @@ export function ticketStatus(tickets, ticketId) {
  */
 export function simpleTicketStatus(tickets, ticketId) {
   // throw new Error('Please implement the simpleTicketStatus function.');
+  if (
+    tickets[ticketId] ||
+    tickets[ticketId] === "" ||
+    tickets[ticketId] === 0 ||
+    tickets[ticketId] === false
+  ) {
+    return tickets[ticketId];
+  }
+  return "invalid ticket !!!";
 }
 
 /**
@@ -54,4 +77,9 @@ export function simpleTicketStatus(tickets, ticketId) {
  */
 export function gtcVersion(visitor) {
   // throw new Error('Please implement the gtcVersion function.');
+  if (visitor.gtc) {
+    return visitor.gtc.version;
+  } else {
+    return undefined;
+  }
 }
