@@ -1,14 +1,10 @@
-const deck = [];
-const FACE_CARDS = ['jack', 'queen', 'king'];
+let counter = 0;
 
-
-function insertFaceCards(deck) {
- if(deck.length === 0) {
-  FACE_CARDS.unshift(undefined);
-  return FACE_CARDS;
- }
- deck.splice(1,0, FACE_CARDS);
- return deck.flat();
+// This function closure increments the counter's state in the outer lexical context.
+// This way the counter can be shared between many calling contexts.
+function increment() {
+  counter += 1;
+  return counter;
 }
 
-console.log(insertFaceCards(deck));
+console.log(increment())

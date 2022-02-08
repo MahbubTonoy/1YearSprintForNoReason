@@ -8,12 +8,9 @@
  *
  * @returns {Card} the first card in the deck
  */
-export function getFirstCard(deck) {
+export function getFirstCard([deck]) {
   // throw new Error('Implement the getFirstCard function');
-  if(deck.length === 0) {
-    return undefined;
-  }
-  return Number(deck.join("").charAt(0));
+  return deck;
 }
 
 /**
@@ -23,18 +20,9 @@ export function getFirstCard(deck) {
  *
  * @returns {Card} the second card in the deck
  */
-export function getSecondCard(deck) {
+export function getSecondCard([deck1, deck2]) {
   // throw new Error('Implement the getSecondCard function');
-  if(deck.length <= 1) {
-   return undefined;
-  }
-  let stringArray = deck.join("+");
-  let firstPoint = stringArray.indexOf("+")+1;
-  let lastPoint = stringArray.indexOf("+",stringArray.indexOf("+")+1);
-  if(lastPoint === -1) {
-   lastPoint = stringArray.length;
-  }
-  return Number(stringArray.slice(firstPoint, lastPoint));
+  return deck2;
  }
 
 /**
@@ -44,12 +32,8 @@ export function getSecondCard(deck) {
  *
  * @returns {Card[]} new deck with reordered cards
  */
-export function swapTopTwoCards(deck) {
-  // throw new Error('Implement the swapTopTwoCards function');
-  let firstItem = deck[0];
-  deck[0] = deck[1];
-  deck[1] = firstItem;
-  return deck;
+export function swapTopTwoCards([deck1,deck2,...deck]) {
+  return [deck2, deck1, ...deck];
 }
 
 /**
@@ -60,9 +44,8 @@ export function swapTopTwoCards(deck) {
  * @returns {[Card, Card[]]} the top card of the given
  * deck and a new deck containing all the other cards
  */
-export function discardTopCard(deck) {
-  // throw new Error('Implement the discardTopCard function');
-  return [deck.shift(), deck];
+export function discardTopCard([deck1, ...deck]) {
+  return [deck1, deck];
 }
 
 /** @type Card[] **/
@@ -76,11 +59,6 @@ const FACE_CARDS = ['jack', 'queen', 'king'];
  * @returns {Card[]} new deck where the second,
  * third, and fourth cards are the face cards
  */
-export function insertFaceCards(deck) {
-  if(deck.length === 0) {
-   FACE_CARDS.unshift(undefined);
-   return FACE_CARDS;
-  }
-  deck.splice(1,0, FACE_CARDS);
-  return deck.flat();
+export function insertFaceCards([deck1, ...deck]) {
+  return [deck1, ...FACE_CARDS, ...deck];
  }
