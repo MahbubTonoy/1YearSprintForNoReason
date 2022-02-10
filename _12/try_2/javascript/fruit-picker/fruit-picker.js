@@ -32,7 +32,7 @@ export function isServiceOnline() {
  * @return {AvailabilityAction} the result from checkInventory
  */
 export function pickFruit(variety, quantity, callback) {
-  return checkInventory({variety, quantity}, callback);
+  return checkInventory({ variety, quantity }, callback);
 }
 
 /**
@@ -43,15 +43,10 @@ export function pickFruit(variety, quantity, callback) {
  * @return {AvailabilityAction} whether the fruit was purchased 'PURCHASE' or 'NOOP'
  */
 export function purchaseInventoryIfAvailable(err, isAvailable) {
-  if(!err) {
-    if(isAvailable) {
-      return 'PURCHASE';
-    } else {
-      return 'NOOP';
-    }
-  } else {
+  if (err) {
     throw new Error("Server Offline");
   }
+  return isAvailable ? "PURCHASE" : "NOOP";
 }
 
 /**
@@ -63,7 +58,5 @@ export function purchaseInventoryIfAvailable(err, isAvailable) {
  */
 export function pickAndPurchaseFruit(variety, quantity) {
   // throw new Error("Implement the pickAndPurchaseFruit function");
-  return pickFruit(variety, quantity, (err, isAvailable)=>{
-    return purchaseInventoryIfAvailable(err, isAvailable)
-  });
+  return pickFruit(variety, quantity, purchaseInventoryIfAvailable);
 }
